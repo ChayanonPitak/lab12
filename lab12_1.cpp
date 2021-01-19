@@ -17,3 +17,25 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+void stat(const double data[], int dataAmount, double result[])
+{
+    double sum = 0;
+    for (int i = 0 ; i < dataAmount ; i++) sum += data[i];
+    result[0] = sum/dataAmount;
+    sum = 0;
+    for (int i = 0 ; i < dataAmount ; i++) sum += pow(data[i]-result[0] ,2);
+    result[1] = sqrt(sum/(dataAmount));
+    sum = 1;
+    for (int i = 0 ; i < dataAmount ; i++) sum *= data[i];
+    result[2] = pow(sum, 1.0f/dataAmount);
+    sum = 0;
+    for (int i = 0 ; i < dataAmount ; i++) sum += 1/data[i];
+    result[3] = dataAmount/sum;
+    sum = data[0];
+    for (int i = 1 ; i < dataAmount ; i++) sum = max(sum, data[i]);
+    result[4] = sum;
+    sum = data[0];
+    for (int i = 1 ; i < dataAmount ; i++) sum = min(sum, data[i]);
+    result[5] = sum;
+}
